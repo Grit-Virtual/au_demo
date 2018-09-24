@@ -1,0 +1,13 @@
+diff a/Breakdown/Assets/Third Party Tools/Restifizer/RestifizerRequest.cs b/Breakdown/Assets/Third Party Tools/Restifizer/RestifizerRequest.cs	(rejected hunks)
+@@ -208,8 +208,11 @@
+ 			}
+ 
+ 			string tag = this.Tag;
++            t = this.Tag;
++
+ 			// Perform request
+ 			someRequest.Send( ( request ) => {
++                req = request;
+ 				if (request.response == null) {
+ 					RestifizerError error = RestifizerErrorFactory.Create(-1, null, tag);
+ 					if (errorHandler != null) {
