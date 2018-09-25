@@ -39,10 +39,6 @@ public class Menu : MonoBehaviour {
 		}
 	}
 
-	// public void PlanButtonClick(){
-	// 	PlanMenu.instance.ShowPlanMenu();
-	// }
-
 	public void DeselectButtonClick(){
 		PlanMenuManager.instance.planning = false;
 		ObjectSelection.instance.EndSelectingPrereqs();
@@ -53,32 +49,7 @@ public class Menu : MonoBehaviour {
 		MenuManager.instance.MenuButtonClick((int)MenuManager.MenuType.NONE);
 	}
 	
-	// public void HideAllMenus(){
-	// 	ActivityMenu.instance.HideActivityMenu ();
-	// 	PlanMenu.instance.HidePlanMenu ();
-	// 	FilterMenu.instance.HideFilterMenu ();
-	// 	InfoMenu.instance.HideInfoMenu();
-	// 	SettingsMenu.instance.HideSettingsMenu ();
-	// 	Confirmation.instance.HideConfirmation ();
-	// 	ObjectSelection.instance.ObjectSelectionEnabled(true);
-	// }
-
 	public void UpdateLoadingText(){
-		// float progress = ((float)(ProjectObjects.instance.projectObjects.Count - (ObjectLoader.instance.objectsToLoad.Count + ObjectLoader.instance.priorityObjectsToLoad.Count)) / ProjectObjects.instance.projectObjects.Count);
-		float progress1 = ((float)(ProjectObjects.instance.projectObjects.Count - (ForgeService.instance.toGenerate.Count)) / ProjectObjects.instance.projectObjects.Count);
-		float progress2 = ((float)(ProjectObjects.instance.projectObjects.Count - (ForgeService.instance.toGenerate.Count + ForgeService.instance.toApply.Count + ForgeService.instance.applying.Count)) / ProjectObjects.instance.projectObjects.Count);
-		int percent = Mathf.RoundToInt(progress2 * 100);
-		int percent2 = Mathf.RoundToInt (progress1 * 100);
-		if(percent < 100){
-			loading = true;
-			loadingText.text = percent + "%";
-			loadingText.gameObject.SetActive(true);
-			loadingImage.gameObject.SetActive(true);
-		} else {
-			loading = false;
-			loadingText.gameObject.SetActive(false);
-			loadingImage.gameObject.SetActive(false);
-		}
 	}
 
 	public void ResetHeightButtonClick(){

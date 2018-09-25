@@ -88,7 +88,6 @@ public class PlanMenuManager : MonoBehaviour {
 		);
         
 		Menu.instance.DeselectButtonClick();
-        ProjectStepService.SendProjectStep(projectStep);
     }
 
 	List<ProjectStepObject> CreateStepObjects(List<ProjectObject> projectObjects, bool prereq = false){

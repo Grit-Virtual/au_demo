@@ -53,9 +53,6 @@ namespace Restifizer {
 
 		void Start(){
 			SetEnvironment ();
-			if (Login.instance != null) {
-				Login.instance.SetEnvironmentLabel ();
-			}
 		}
 
 		public void SetEnvironment(){

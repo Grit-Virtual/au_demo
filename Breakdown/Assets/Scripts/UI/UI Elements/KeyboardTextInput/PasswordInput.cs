@@ -33,9 +33,7 @@ public class PasswordInput : MonoBehaviour, KeyboardTextInput {
 			}
 			p = input;
 			if(SceneManager.GetActiveScene().name == "Login"){
-				Login.instance.OnLoginSubmit();
 			} else {
-				PlannerLogin.instance.Submit();
 			}
 		}
 	}

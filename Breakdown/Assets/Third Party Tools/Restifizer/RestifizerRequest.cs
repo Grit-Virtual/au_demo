@@ -249,9 +249,6 @@ namespace Restifizer {
 				if (hasError) {
 					RestifizerError error = RestifizerErrorFactory.Create(request.response.status, responseResult, tag);
 					Debug.LogError(((Hashtable)responseResult)["response"] + " ("+ request.uri + ")");
-					if(error.Status == 401 && !request.uri.ToString().EndsWith("isAuthenticated")){
-						AuthService.CheckToken();
-					}
 					if (errorHandler != null) {
 						bool propagateResult = !errorHandler.onRestifizerError(error);
 						if (propagateResult) {

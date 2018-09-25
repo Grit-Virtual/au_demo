@@ -32,7 +32,6 @@ public class ProjectObject : MonoBehaviour {
 	public bool isLoaded = false;
 
 	public BoxCollider loadingCollider;
-	public ObjectMesh[] meshes;
 	public int lod = -1;
 	public int activeLod = -1;
 
@@ -49,23 +48,7 @@ public class ProjectObject : MonoBehaviour {
 	}
 #endif
 
-	public void Initialize(ObjectGenerationInfo objectInfo){
-		box = objectInfo.boundingBox;
-		id = objectInfo.id;
-		name = objectInfo.name;
-		modelId = objectInfo.modelId;
-		forgeId = objectInfo.forgeId;
-		categories = objectInfo.categories;
-		wallFloorOrRoof = false;
-		for(int i = 0; i < categories.Count; i++){
-	        wallFloorOrRoof = categories[i].ToLower().Contains("wall") || categories[i].ToLower().Contains("floor") || categories[i].ToLower().Contains("roof");
-			if(wallFloorOrRoof) break;
-		}
-		hidden = objectInfo.hidden;
-        activities = objectInfo.activities;
-        circularObjects = objectInfo.circularObjects;
-		fragments = objectInfo.fragments;
-
+	public void Initialize(){
 	}
 
     public void AssignInfo(ProjectObjectInfo projectObjectInfo) {
@@ -87,9 +70,6 @@ public class ProjectObject : MonoBehaviour {
 	}
 
 	public void EnableAndLoad(bool priority) {
-		if (!ObjectLoader.instance.currentObjects.ContainsKey (this.loadingCollider)) {
-			ObjectLoader.instance.currentObjects.Add (this.loadingCollider, this);
-		}
 		CheckLod (priority);
 		CheckActiveLod ();
 	}
@@ -112,30 +92,13 @@ public class ProjectObject : MonoBehaviour {
 			index = lods.Count - 1;
 		if (index != lod) {
 			lod = index;
-			int lodIndex = this.meshes == null ? 0 : ObjectMesh.getLod (lods.Count, lod, meshes.Length);
-			if (this.meshes == null || this.meshes [lodIndex] == null || !this.meshes [lodIndex].loaded) {
-				ForgeService.instance.GetMeshFrag (this, priority);
-			} else {
-				CheckActiveLod ();
-			}
 		}
 	}
 
 	private void CheckActiveLod() {
-		int lodIndex = meshes == null ? -1 : ObjectMesh.getLod (lods.Count, lod, meshes.Length);
-		if (activeLod != lod && this.meshes != null && this.meshes [lodIndex] != null && this.meshes [lodIndex].loaded) {
-			lods [lod].gameObject.SetActive (true);
-			if (activeLod != -1) {
-				lods [activeLod].gameObject.SetActive (false);
-			}
-			activeLod = lod;
-		}
 	}
 
 	public void Disable() {
-		if (ObjectLoader.instance.currentObjects.ContainsKey (this.loadingCollider)) {
-			ObjectLoader.instance.currentObjects.Remove (this.loadingCollider);
-		}
 		lod = -1;
 		foreach (Lod lod in lods) {
 			lod.gameObject.SetActive (false);

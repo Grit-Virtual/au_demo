@@ -53,7 +53,6 @@ public class ObjectSelection: MonoBehaviour {
 			lastSelectedObject = projectObject;
 			InstatiateSelectedObjectUI();
 
-			ProjectObjectService.AssignObjectInfo (projectObject);
 			bool selectionPlannable = true;
 			for(int i = 0; i < selectedObjects.Count; i++){
 				selectionPlannable = ProjectObjects.instance.CheckIfObjectIsPlannable(selectedObjects[i]);
@@ -93,7 +92,6 @@ public class ObjectSelection: MonoBehaviour {
         selectedPrereqs.Add(projectObject);
 		projectObject.interactiveSelect.HighlightObjectAsPrereq();
 		Raycaster.instance.SetPointerEnabled(false);
-        ProjectObjectService.AssignPrereqInfo (projectObject);
 	}
 
 	public void AddPrereqActivity(string activity){

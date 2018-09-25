@@ -105,7 +105,6 @@ public class VRDOC_Camera : MonoBehaviour {
                 if (threadIsDone) {
                     awaitingResponse = false;
                     initialized = true;
-                    Initialization.instance.InitCameraOccDone();
                 }
             }
         }

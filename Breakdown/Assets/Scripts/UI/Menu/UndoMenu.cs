@@ -25,7 +25,6 @@ public class UndoMenu : MonoBehaviour {
 
 	public void UndoLastStep(){
 		if(undoSteps.Count > 0){
-			StartCoroutine(ProjectStepService.DeleteProjectStep(undoSteps[0]));
 			Menu.instance.DeselectButtonClick();
 		}
 	}

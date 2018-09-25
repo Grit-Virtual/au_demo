@@ -31,9 +31,7 @@ public class AuthCodeInput : MonoBehaviour, KeyboardTextInput {
 				authCodeInputs [i].shortCode = input.Insert (3, "-");
 			}
 			if(SceneManager.GetActiveScene().name == "Login"){
-				Login.instance.OnLoginSubmit();
 			} else {
-				PlannerLogin.instance.Submit();
 			}
 		}
 	}

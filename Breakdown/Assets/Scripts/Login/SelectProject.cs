@@ -31,7 +31,6 @@ public class SelectProject : MonoBehaviour {
 
 	public void PopulateProjectSelectionList(){
 		ClearProjectSelectors();
-		ProjectService.PopulateProjectSelectionList ();
 	}
 
 	void SortProjects(){
@@ -67,7 +66,6 @@ public class SelectProject : MonoBehaviour {
 		}
 		Utils_Prefs.ClearPrefs ();
 		HideProjectSelectScreen ();
-		Login.instance.ShowLoginScreen ();
 	}
 
 	public void SetNameText(string name){

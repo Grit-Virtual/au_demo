@@ -93,7 +93,6 @@ public class MenuManager : MonoBehaviour {
 				SettingsMenu.instance.ShowSettingsMenu();
 				break;
 			case MenuType.LOGIN:
-				PlannerLogin.instance.ShowLoginScreen();
 				break;
 			case MenuType.NONE:
 				ObjectSelection.instance.ObjectSelectionEnabled(true);
@@ -131,7 +130,6 @@ public class MenuManager : MonoBehaviour {
 				SettingsMenu.instance.HideSettingsMenu();
 				break;
 			case MenuType.LOGIN:
-				PlannerLogin.instance.HideLoginScreen();
 				break;
 			case MenuType.NONE:
 				break;
